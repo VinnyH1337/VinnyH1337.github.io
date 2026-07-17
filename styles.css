@@ -12,25 +12,53 @@
 body {
   min-height: 100vh;
   margin: 0;
-  display: grid;
-  place-items: center;
   background: radial-gradient(circle at top, #ffffff 0%, #f7f8fb 55%, #edf1f7 100%);
 }
 
 .homepage {
-  width: min(90vw, 32rem);
-  padding: clamp(2rem, 8vw, 4rem);
+  width: min(92vw, 56rem);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(2rem, 8vw, 5rem) 0;
   display: grid;
-  gap: 2rem;
+  gap: clamp(3rem, 8vw, 5rem);
+  align-content: center;
+}
+
+.intro,
+.chart-section {
+  display: grid;
   justify-items: center;
   text-align: center;
 }
 
-h1 {
+.intro {
+  gap: 2rem;
+}
+
+h1,
+h2,
+p {
   margin: 0;
+}
+
+h1 {
   font-size: clamp(2.5rem, 12vw, 5rem);
   line-height: 1;
   letter-spacing: -0.06em;
+}
+
+h2 {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+p {
+  max-width: 38rem;
+  color: #4b5563;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.6;
 }
 
 .button {
@@ -57,4 +85,22 @@ h1 {
 .button:focus-visible {
   outline: 3px solid rgba(10, 102, 194, 0.35);
   outline-offset: 4px;
+}
+
+.chart-section {
+  gap: 1.25rem;
+}
+
+.chart-card {
+  width: 100%;
+  height: clamp(18rem, 52vw, 28rem);
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 1rem 3rem rgba(23, 32, 51, 0.06);
+}
+
+canvas {
+  display: block;
 }
