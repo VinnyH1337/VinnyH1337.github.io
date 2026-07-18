@@ -10,14 +10,15 @@
   --teal-soft: #e8f4f3;
   --coral: #d96c52;
   --gold: #d5a33f;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Times New Roman", Times, serif;
   background: var(--paper);
   color: var(--ink);
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: linear-gradient(135deg, #fff 0%, #fff 58%, #f7fafb 100%); font-size: 17px; line-height: 1.5; }
+* { box-sizing: border-box; font-family: inherit; }
+html { scroll-behavior: smooth; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
+body { margin: 0; background: #fff; font-size: 17px; line-height: 1.5; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
+a, button, [role="button"] { cursor: url("assets/cursors/windows-hand.svg") 7 0, pointer; }
 a { color: var(--link); text-underline-offset: 2px; }
 a:hover { color: var(--link-hover); }
 
