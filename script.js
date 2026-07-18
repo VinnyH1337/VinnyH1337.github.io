@@ -12,84 +12,51 @@ function formatMonth(value) {
   if (value instanceof Date) {
     return value.toLocaleDateString('en', { month: 'short', year: 'numeric', timeZone: 'UTC' });
   }
-
   return String(value ?? '').trim();
 }
 
 function parseRuciRows(rows) {
   return rows
-    .filter((row) => row[MONTH_COLUMN] !== null && row[MONTH_COLUMN] !== undefined && row[RUCI_COLUMN] !== null && row[RUCI_COLUMN] !== undefined)
-    .map((row) => ({
-      month: formatMonth(row[MONTH_COLUMN]),
-      value: Number(row[RUCI_COLUMN]),
-    }))
+    .filter((row) => row[MONTH_COLUMN] != null && row[RUCI_COLUMN] != null)
+    .map((row) => ({ month: formatMonth(row[MONTH_COLUMN]), value: Number(row[RUCI_COLUMN]) }))
     .filter((row) => row.month && Number.isFinite(row.value));
 }
 
 function renderRuciChart(data) {
   const canvas = document.getElementById('ruci-chart');
+  if (!canvas) return;
 
   new Chart(canvas, {
     type: 'line',
     data: {
       labels: data.map((row) => row.month),
-      datasets: [
-        {
-          label: 'RUCI Europe',
-          data: data.map((row) => row.value),
-          borderColor: '#173b6c',
-          borderWidth: 1.5,
-          pointRadius: 0,
-          pointHoverRadius: 4,
-          pointHoverBackgroundColor: '#173b6c',
-          pointHoverBorderColor: '#ffffff',
-          pointHoverBorderWidth: 2,
-          tension: 0,
-        },
-      ],
+      datasets: [{
+        label: 'RUCI Europe',
+        data: data.map((row) => row.value),
+        borderColor: '#953521',
+        backgroundColor: 'rgba(149, 53, 33, 0.08)',
+        fill: true,
+        borderWidth: 2,
+        pointRadius: 0,
+        pointHoverRadius: 4,
+        pointHoverBackgroundColor: '#953521',
+        pointHoverBorderColor: '#ffffff',
+        pointHoverBorderWidth: 2,
+        tension: 0,
+      }],
     },
     options: {
       animation: false,
       responsive: true,
       maintainAspectRatio: false,
-      interaction: {
-        intersect: false,
-        mode: 'index',
-      },
+      interaction: { intersect: false, mode: 'index' },
       plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-          callbacks: {
-            title: (items) => items[0]?.label ?? '',
-            label: (item) => `RUCI Europe: ${item.parsed.y}`,
-          },
-        },
+        legend: { display: false },
+        tooltip: { callbacks: { title: (items) => items[0]?.label ?? '', label: (item) => `RUCI Europe: ${item.parsed.y}` } },
       },
       scales: {
-        x: {
-          title: {
-            display: true,
-            text: 'month',
-          },
-          grid: {
-            color: '#e5e7eb',
-          },
-          ticks: {
-            maxTicksLimit: 8,
-          },
-        },
-        y: {
-          title: {
-            display: true,
-            text: 'RUCI Europe',
-          },
-          grid: {
-            color: '#e5e7eb',
-          },
-          beginAtZero: false,
-        },
+        x: { grid: { color: '#e6e9ed' }, ticks: { maxTicksLimit: 8 } },
+        y: { grid: { color: '#e6e9ed' }, beginAtZero: false },
       },
     },
   });
@@ -97,28 +64,21 @@ function renderRuciChart(data) {
 
 async function loadRuciChart() {
   const response = await fetch(DATA_FILE);
-  if (!response.ok) {
-    throw new Error(`Unable to load ${DATA_FILE}`);
-  }
-
+  if (!response.ok) throw new Error(`Unable to load ${DATA_FILE}`);
   const workbook = XLSX.read(await response.arrayBuffer(), { type: 'array', cellDates: true });
   const rows = findRuciWorksheet(workbook);
-
-  if (!rows) {
-    throw new Error(`No worksheet contains ${MONTH_COLUMN} and ${RUCI_COLUMN}`);
-  }
-
+  if (!rows) throw new Error(`No worksheet contains ${MONTH_COLUMN} and ${RUCI_COLUMN}`);
   const data = parseRuciRows(rows);
-
-  if (!data.length) {
-    throw new Error('No RUCI Europe rows found');
-  }
-
+  if (!data.length) throw new Error('No RUCI Europe rows found');
   renderRuciChart(data);
 }
 
 window.addEventListener('DOMContentLoaded', () => {
+  const year = document.getElementById('year');
+  const status = document.getElementById('chart-status');
+  if (year) year.textContent = new Date().getFullYear();
   loadRuciChart().catch((error) => {
     console.error(error);
+    if (status) status.textContent = 'The RUCI Europe chart could not be loaded.';
   });
 });
