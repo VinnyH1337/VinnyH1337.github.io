@@ -26,8 +26,7 @@ function renderRuciChart(data) {
   const canvas = document.getElementById('ruci-chart');
   if (!canvas) return;
 
-  const observedMaximum = Math.max(...data.map((row) => row.value));
-  const yAxisMaximum = Math.max(1100, Math.ceil((observedMaximum * 1.1) / 100) * 100);
+  const yAxisMaximum = 1200;
 
   new Chart(canvas, {
     type: 'line',
