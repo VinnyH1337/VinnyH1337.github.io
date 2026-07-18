@@ -13,11 +13,8 @@
 <body>
   <header class="site-header">
     <nav class="nav" aria-label="Primary navigation">
-      <a class="brand" href="index.html">Vincent Hoffmann</a>
       <div class="nav-links">
         <a href="index.html">Home</a>
-        <a href="index.html#publications">Publications</a>
-        <a href="index.html#research">Research</a>
         <a class="active" href="ruci.html">RUCI Index</a>
         <a href="https://vinnyh1337.github.io/gpr-dashboard/" target="_blank" rel="noopener noreferrer">AI GPR Dashboard</a>
       </div>
@@ -26,10 +23,20 @@
 
   <main class="ruci-page">
     <header class="ruci-intro">
-      <p class="kicker">Research data</p>
-      <h1>RUCI Europe Index</h1>
-      <p>The Russia-Ukraine Conflict Uncertainty (RUCI) Europe Index measures the intensity of uncertainty associated with the Russia-Ukraine conflict in European news coverage. Higher values indicate periods in which conflict-related uncertainty is more prominent.</p>
-      <p>The monthly series makes it easier to compare changes over time and to identify major increases around turning points in the conflict. The index is intended as a research tool for studying how geopolitical uncertainty relates to financial markets and the wider European economy.</p>
+      <div class="ruci-copy">
+        <p class="kicker">Research data</p>
+        <h1>RUCI Europe Index</h1>
+        <p>The Russia-Ukraine Conflict Uncertainty (RUCI) Europe Index measures the intensity of uncertainty associated with the Russia-Ukraine conflict in European news coverage. Higher values indicate periods in which conflict-related uncertainty is more prominent.</p>
+      </div>
+      <aside class="source-card" aria-label="RUCI data sources">
+        <p class="source-label">European news sources</p>
+        <ul>
+          <li>Die Welt</li>
+          <li>The Guardian</li>
+          <li>Le Monde</li>
+        </ul>
+        <p class="database-link"><span>Database</span><a href="https://tdmstudio.proquest.com/home" target="_blank" rel="noopener noreferrer">ProQuest TDM Studio</a></p>
+      </aside>
     </header>
 
     <section class="chart-section" aria-labelledby="chart-title">
@@ -44,7 +51,6 @@
         <canvas id="ruci-chart" aria-label="RUCI Europe Index line chart" role="img"></canvas>
         <p id="chart-status" class="chart-status" aria-live="polite"></p>
       </div>
-      <p class="chart-note">The vertical scale includes headroom above 1,000 so the historical peak remains clearly visible rather than touching the top edge of the chart.</p>
     </section>
   </main>
 
