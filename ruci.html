@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The RUCI Europe Index tracks Russia-Ukraine conflict uncertainty in Europe.">
+  <title>RUCI Europe Index | Vincent Hoffmann</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="index.html">Vincent Hoffmann</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#publications">Publications</a>
+        <a href="index.html#research">Research</a>
+        <a class="active" href="ruci.html">RUCI Index</a>
+        <a href="https://vinnyh1337.github.io/gpr-dashboard/" target="_blank" rel="noopener noreferrer">AI GPR Dashboard</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ruci-page">
+    <header class="ruci-intro">
+      <p class="kicker">Research data</p>
+      <h1>RUCI Europe Index</h1>
+      <p>The Russia-Ukraine Conflict Uncertainty (RUCI) Europe Index measures the intensity of uncertainty associated with the Russia-Ukraine conflict in European news coverage. Higher values indicate periods in which conflict-related uncertainty is more prominent.</p>
+      <p>The monthly series makes it easier to compare changes over time and to identify major increases around turning points in the conflict. The index is intended as a research tool for studying how geopolitical uncertainty relates to financial markets and the wider European economy.</p>
+    </header>
+
+    <section class="chart-section" aria-labelledby="chart-title">
+      <div class="chart-heading">
+        <div>
+          <h2 id="chart-title">Monthly RUCI Europe</h2>
+          <p>January 2014 onward</p>
+        </div>
+        <a href="ruci_europe.xlsx" download>Download data</a>
+      </div>
+      <div class="chart-card">
+        <canvas id="ruci-chart" aria-label="RUCI Europe Index line chart" role="img"></canvas>
+        <p id="chart-status" class="chart-status" aria-live="polite"></p>
+      </div>
+      <p class="chart-note">The vertical scale includes headroom above 1,000 so the historical peak remains clearly visible rather than touching the top edge of the chart.</p>
+    </section>
+  </main>
+
+  <footer><p>&copy; <span id="year"></span> Vincent Hoffmann</p></footer>
+</body>
+</html>
