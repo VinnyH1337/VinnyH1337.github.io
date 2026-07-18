@@ -1,6 +1,6 @@
 :root {
   color-scheme: light;
-  --desktop: #eceae5;
+  --desktop: #e2e0db;
   --ink: #171817;
   --muted: #4b4c49;
   --paper: #f7f5ef;
@@ -53,7 +53,7 @@ body {
 a,
 button,
 [role="button"] {
-  cursor: url("assets/cursors/windows-hand.svg") 7 0, pointer;
+  cursor: url("assets/cursors/windows-hand.svg") 10 1, pointer;
 }
 
 a { color: var(--link); text-underline-offset: 3px; }
@@ -62,7 +62,7 @@ a:hover { color: var(--teal-bright); }
 .desktop {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 0;
   padding: 18px 150px 18px 160px;
 }
 
@@ -155,8 +155,7 @@ a:hover { color: var(--teal-bright); }
 
 .profile-window {
   position: relative;
-  width: min(1080px, 100%);
-  min-height: calc(100vh - 36px);
+  width: min(1240px, 100%);
   margin: 0 auto;
   border: 3px solid var(--chrome-dark);
   outline: 2px solid var(--chrome-light);
@@ -181,8 +180,8 @@ a:hover { color: var(--teal-bright); }
 }
 
 .window-content {
-  min-height: calc(100vh - 54px);
   padding: clamp(36px, 4.6vw, 62px);
+  padding-bottom: 36px;
   background: var(--paper);
 }
 
@@ -248,7 +247,12 @@ a:hover { color: var(--teal-bright); }
   .desktop-icon-art { width: 48px; height: 48px; }
   .desktop-icon-label { max-width: 68px; font-size: 11px; }
   .theme-toggle { position: absolute; }
-  .profile-window, .window-content { min-height: auto; }
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  cursor: text;
 }
 
 @media (max-width: 700px) {
