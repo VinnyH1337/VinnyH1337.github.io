@@ -16,9 +16,9 @@
 }
 
 * { box-sizing: border-box; font-family: inherit; }
-html { scroll-behavior: smooth; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
-body { margin: 0; background: #fff; font-size: 17px; line-height: 1.5; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
-a, button, [role="button"] { cursor: pointer; }
+html { scroll-behavior: smooth; cursor: url("assets/cursors/windows-arrow.png") 7 1, default; }
+body { margin: 0; background: #fff; font-size: 17px; line-height: 1.5; cursor: url("assets/cursors/windows-arrow.png") 7 1, default; }
+a, button, [role="button"] { cursor: url("assets/cursors/windows-hand.png") 13 1, pointer; }
 input, textarea, [contenteditable="true"] { cursor: text; }
 a { color: var(--link); text-underline-offset: 2px; }
 a:hover { color: var(--link-hover); }
