@@ -148,7 +148,7 @@ transition:
     filter 100ms steps(1);
 }
 
-..desktop-icon:hover .desktop-icon-art,
+.desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
   transform: translateY(-2px);
   filter: brightness(1.06);
@@ -518,7 +518,10 @@ textarea,
   }
 
   .desktop-icon-label {
-    display: none;
+    display: block;
+    max-width: 60px;
+    font-size: 10px;
+    line-height: 1.1;
   }
 
   .theme-toggle {
@@ -576,4 +579,14 @@ textarea,
   *::after {
     transition: none !important;
   }
+}
+
+
+.window-content,
+.intro-copy p,
+.paper-row p,
+.paper-row h3,
+.ruci-copy p {
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
