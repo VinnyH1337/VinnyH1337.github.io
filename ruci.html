@@ -11,7 +11,7 @@
 
   <title>RUCI Europe Index | Vincent Hoffmann</title>
 
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="home.css?v=22">
 
   <script
     src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"
@@ -23,163 +23,213 @@
     defer
   ></script>
 
+  <script src="home.js?v=13" defer></script>
   <script src="script.js?v=9" defer></script>
 </head>
 
 <body>
+  <main class="desktop">
 
-  <header class="site-header">
+    <nav class="desktop-icons" aria-label="Quick links">
 
-    <nav class="nav" aria-label="Primary navigation">
-
-      <div class="nav-links">
-
-        <a class="nav-link" href="index.html">
-          <img
-            class="nav-icon"
-            src="assets/icons/home.png?v=15"
-            alt=""
-            aria-hidden="true"
-          >
-          <span>Home</span>
-        </a>
-
-        <a class="nav-link active" href="ruci.html">
-          <img
-            class="nav-icon"
-            src="assets/icons/ruciindex.png?v=15"
-            alt=""
-            aria-hidden="true"
-          >
-          <span>RUCI Index</span>
-        </a>
-
-        <a
-          class="nav-link"
-          href="https://vinnyh1337.github.io/gpr-dashboard/"
+      <a class="desktop-icon" href="index.html">
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/home.png?v=15"
+          alt=""
         >
-          <img
-            class="nav-icon"
-            src="assets/icons/aigpr.png?v=15"
-            alt=""
-            aria-hidden="true"
-          >
-          <span>AI GPR Dashboard</span>
-        </a>
+        <span class="desktop-icon-label">Home</span>
+      </a>
 
-      </div>
+      <a class="desktop-icon" href="ruci.html">
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/ruciindex.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">RUCI Index</span>
+      </a>
 
-      <button
-        class="theme-toggle"
-        id="theme-toggle"
-        type="button"
-        aria-pressed="false"
-        aria-label="Switch to dark mode"
+      <a
+        class="desktop-icon"
+        href="https://vinnyh1337.github.io/gpr-dashboard/"
       >
         <img
-          class="theme-toggle-icon theme-toggle-icon-light"
-          src="assets/icons/sun.png?v=2"
+          class="desktop-icon-art"
+          src="assets/icons/aigpr.png?v=15"
           alt=""
-          aria-hidden="true"
         >
+        <span class="desktop-icon-label">AI GPR Dashboard</span>
+      </a>
 
+      <a
+        class="desktop-icon"
+        href="https://www.linkedin.com/in/vincent-hoffmann-17097a123/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         <img
-          class="theme-toggle-icon theme-toggle-icon-dark"
-          src="assets/icons/moon.png?v=2"
+          class="desktop-icon-art"
+          src="assets/icons/linkedin.png?v=15"
           alt=""
-          aria-hidden="true"
         >
+        <span class="desktop-icon-label">LinkedIn</span>
+      </a>
 
-        <span class="theme-label">Light Mode</span>
-      </button>
+      <a
+        class="desktop-icon"
+        href="https://scholar.google.com/citations?user=iz4PqZQAAAAJ&hl=de&oi=ao"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/scholar.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">Google Scholar</span>
+      </a>
+
+      <a
+        class="desktop-icon"
+        href="https://github.com/VinnyH1337"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/github.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">GitHub</span>
+      </a>
 
     </nav>
 
-  </header>
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      type="button"
+      aria-pressed="false"
+      aria-label="Switch to dark mode"
+    >
+      <img
+        class="theme-toggle-icon theme-toggle-icon-light"
+        src="assets/icons/sun.png"
+        alt=""
+        aria-hidden="true"
+      >
 
-  <main class="ruci-page">
+      <img
+        class="theme-toggle-icon theme-toggle-icon-dark"
+        src="assets/icons/moon.png"
+        alt=""
+        aria-hidden="true"
+      >
 
-    <header class="ruci-intro">
+      <span class="theme-label">Light Mode</span>
+    </button>
 
-      <div class="ruci-copy">
+    <section class="profile-window" aria-labelledby="ruci-title">
 
-        <p class="kicker">Research data</p>
-
-        <h1>RUCI Europe Index</h1>
-
-        <p>
-          The Russia-Ukraine Conflict Uncertainty (RUCI) Europe Index measures
-          the intensity of uncertainty associated with the Russia-Ukraine
-          conflict in European news coverage. Higher values indicate periods
-          in which conflict-related uncertainty is more prominent.
-        </p>
-
+      <div class="window-bar" aria-hidden="true">
+        <span></span>
       </div>
 
-      <aside class="source-card" aria-label="RUCI data sources">
+      <div class="window-content">
 
-        <p class="source-label">European news sources</p>
+        <header class="ruci-page-intro">
 
-        <ul>
-          <li>Die Welt</li>
-          <li>The Guardian</li>
-          <li>Le Monde</li>
-        </ul>
+          <div class="ruci-copy">
 
-        <p class="database-link">
-          <span>Database</span>
+            <p class="role">Research Data</p>
 
-          <a
-            href="https://tdmstudio.proquest.com/home"
-            target="_blank"
-            rel="noopener noreferrer"
+            <h1 id="ruci-title">RUCI Europe Index</h1>
+
+            <span class="short-rule" aria-hidden="true"></span>
+
+            <p>
+              The Russia-Ukraine Conflict Uncertainty (RUCI) Europe Index
+              measures the intensity of uncertainty associated with the
+              Russia-Ukraine conflict in European news coverage.
+            </p>
+
+            <p>
+              Higher values indicate periods in which conflict-related
+              uncertainty is more prominent.
+            </p>
+
+          </div>
+
+          <aside
+            class="ruci-source-card"
+            aria-label="RUCI data sources"
           >
-            ProQuest TDM Studio
-          </a>
-        </p>
 
-      </aside>
+            <h2>European News Sources</h2>
 
-    </header>
+            <div class="source-tags">
+              <span>Die Welt</span>
+              <span>The Guardian</span>
+              <span>Le Monde</span>
+            </div>
 
-    <section class="chart-section" aria-labelledby="chart-title">
+            <p class="database-link">
+              <span>Database</span>
 
-      <div class="chart-heading">
+              <a
+                href="https://tdmstudio.proquest.com/home"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ProQuest TDM Studio
+              </a>
+            </p>
 
-        <div>
-          <h2 id="chart-title">Monthly RUCI Europe</h2>
-          <p>January 2014 onward</p>
-        </div>
+          </aside>
 
-        <a href="ruci_europe.xlsx" download>
-          Download data
-        </a>
+        </header>
 
-      </div>
+        <section
+          class="research-section ruci-chart-section"
+          aria-labelledby="chart-title"
+        >
 
-      <div class="chart-card">
+          <div class="ruci-chart-heading">
 
-        <canvas
-          id="ruci-chart"
-          aria-label="RUCI Europe Index line chart"
-          role="img"
-        ></canvas>
+            <div>
+              <h2 id="chart-title">Monthly RUCI Europe</h2>
+              <p>January 2014 onward</p>
+            </div>
 
-        <p
-          id="chart-status"
-          class="chart-status"
-          aria-live="polite"
-        ></p>
+            <a href="ruci_europe.xlsx" download>
+              Download Data
+            </a>
+
+          </div>
+
+          <div class="ruci-chart-card">
+
+            <canvas
+              id="ruci-chart"
+              aria-label="RUCI Europe Index line chart"
+              role="img"
+            ></canvas>
+
+            <p
+              id="chart-status"
+              class="chart-status"
+              aria-live="polite"
+            ></p>
+
+          </div>
+
+        </section>
 
       </div>
 
     </section>
 
   </main>
-
-  <footer>
-    <p>&copy; <span id="year"></span> Vincent Hoffmann</p>
-  </footer>
-
 </body>
 </html>
