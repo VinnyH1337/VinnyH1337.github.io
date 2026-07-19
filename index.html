@@ -21,6 +21,18 @@
       document.documentElement.dataset.theme = savedTheme || preferredTheme;
     })();
   </script>
+
+  <style>
+  html,
+  body {
+    background: #e2e0db;
+  }
+
+  html[data-theme="dark"],
+  html[data-theme="dark"] body {
+    background: #202321;
+  }
+</style>
   
  <title>Vincent Hoffmann</title>
 
