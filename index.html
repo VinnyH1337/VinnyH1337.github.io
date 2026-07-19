@@ -101,38 +101,39 @@
 
     </nav>
 
-<button
-  class="theme-toggle"
-  id="theme-toggle"
-  type="button"
-  aria-pressed="false"
-  aria-label="Switch to dark mode"
->
-  <span class="wall-switch" aria-hidden="true">
-    <span class="wall-switch__well">
-      <span class="wall-switch__rocker">
+<div class="theme-control">
+  <label class="panel">
+    <input
+      class="input"
+      id="theme-toggle"
+      type="checkbox"
+      role="switch"
+      aria-label="Switch to dark mode"
+    >
 
-        <span class="wall-switch__icon wall-switch__icon--sun">
-          <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="8"></circle>
-            <path
-              d="M24 5v7M24 36v7M5 24h7M36 24h7M10.5 10.5l5 5M32.5 32.5l5 5M37.5 10.5l-5 5M15.5 32.5l-5 5"
-            ></path>
-          </svg>
+    <span class="hole">
+      <span class="switch">
+        <span class="shadow-box top">
+          <span class="shadow top"></span>
         </span>
 
-        <span class="wall-switch__icon wall-switch__icon--moon">
-          <svg viewBox="0 0 48 48">
-            <path d="M34 35A16 16 0 0 1 18 9a16 16 0 1 0 16 26Z"></path>
-          </svg>
+        <span class="shadow-box bottom">
+          <span class="shadow bottom"></span>
         </span>
 
+        <span class="switch_top">
+          <span class="outsetTop"></span>
+        </span>
+
+        <span class="switch_bottom">
+          <span class="outsetBottom"></span>
+        </span>
       </span>
     </span>
-  </span>
+  </label>
 
   <span class="theme-label">Light Mode</span>
-</button>
+</div>
 
     <section class="profile-window" aria-labelledby="profile-name">
 
