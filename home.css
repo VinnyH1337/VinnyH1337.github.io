@@ -144,15 +144,13 @@ a:focus-visible {
   object-fit: contain;
   image-rendering: pixelated;
 
-  transition:
-    transform 100ms steps(1),
-    filter 100ms steps(1);
+transition: filter 100ms steps(1);
 }
 
 .desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
   transform: none;
-  filter: none;
+  filter: brightness(1.06);
 }
 
 .desktop-icon-label,
