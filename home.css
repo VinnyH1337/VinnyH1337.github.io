@@ -169,7 +169,7 @@ a:focus-visible {
   text-align: center;
 }
 
-/* Physical horizontal rocker theme switch */
+/* Physical horizontal wall-switch theme control */
 
 .theme-toggle {
   position: fixed;
@@ -181,95 +181,141 @@ a:focus-visible {
   justify-items: center;
   gap: 7px;
 
-  width: 118px;
+  width: 126px;
   padding: 0;
 
   border: 0;
-  outline: 0;
   background: transparent;
   color: var(--ink);
 }
 
-.switch {
+/* Outer wall plate */
+
+.wall-switch {
   position: relative;
   display: block;
 
-  width: 108px;
-  height: 52px;
+  width: 116px;
+  height: 58px;
 
-  border-radius: 5px;
-  background: #c7c7c7;
+  padding: 7px;
+
+  border: 1px solid #363636;
+  border-radius: 7px;
+
+  background: #c6c6c2;
 
   box-shadow:
-    inset 0 24px 14px rgba(255, 255, 255, 0.3),
-    inset 0 -18px 14px rgba(70, 70, 70, 0.18),
-    inset 2px 2px 0 #f4f4f4,
-    inset -2px -2px 0 #626262,
-    0 0 0 1px #333333,
-    3px 4px 4px rgba(0, 0, 0, 0.3);
+    inset 2px 2px 0 #ffffff,
+    inset -2px -2px 0 #747474,
+    1px 1px 0 #eeeeeb,
+    4px 5px 5px rgba(0, 0, 0, 0.28);
 
-  perspective: 180px;
+  perspective: 260px;
 }
 
-.switch__lever,
-.switch__lever-shadow {
-  position: absolute;
+/* Recessed opening around the physical switch */
+
+.wall-switch__well {
+  position: relative;
   display: block;
-  pointer-events: none;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-top: 2px solid #505050;
+  border-left: 2px solid #505050;
+  border-right: 2px solid #eeeeee;
+  border-bottom: 2px solid #eeeeee;
+
+  border-radius: 3px;
+
+  background: #555753;
+
+  box-shadow:
+    inset 4px 3px 7px rgba(0, 0, 0, 0.65),
+    inset -2px -2px 3px rgba(255, 255, 255, 0.18);
 }
 
-.switch__lever {
-  top: 6px;
-  left: 6px;
+/*
+  This is one continuous physical rocker.
+  Both icons sit on the same element.
+*/
+
+.wall-switch__rocker {
+  position: absolute;
+  top: 3px;
+  left: 3px;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
+  align-items: center;
 
-  width: calc(100% - 12px);
-  height: calc(100% - 12px);
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
 
-  overflow: visible;
   border-radius: 3px;
 
-  background: #777873;
+  background:
+    linear-gradient(
+      90deg,
+      #d3d3ce 0%,
+      #c4c4bf 48%,
+      #969793 52%,
+      #767874 100%
+    );
+
+  transform:
+    rotateY(-13deg)
+    translateX(-2px);
+
+  transform-origin: center center;
 
   box-shadow:
-    inset 0 0 5px rgba(0, 0, 0, 0.75),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    inset 2px 2px 1px rgba(255, 255, 255, 0.9),
+    inset -3px -3px 2px rgba(40, 40, 40, 0.6),
+    5px 1px 5px rgba(0, 0, 0, 0.52);
+
+  transition:
+    transform 220ms cubic-bezier(0.83, 0, 0.17, 1),
+    background 220ms cubic-bezier(0.83, 0, 0.17, 1),
+    box-shadow 220ms cubic-bezier(0.83, 0, 0.17, 1);
 }
 
-.switch__lever-shadow {
-  z-index: 0;
-  top: 8px;
-  left: 9px;
+/* Central seam pressed into the single rocker */
 
-  width: 96px;
-  height: 40px;
+.wall-switch__rocker::after {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 50%;
 
-  border-radius: 3px;
-  background: rgba(0, 0, 0, 0.22);
+  width: 1px;
 
-  transform: translate(4px, 4px) skewY(-3deg);
-  filter: blur(1px);
+  background: rgba(45, 45, 45, 0.3);
+  box-shadow: 1px 0 rgba(255, 255, 255, 0.3);
+
+  content: "";
 }
 
-.switch__half {
+/* Icons */
+
+.wall-switch__icon {
   position: relative;
   z-index: 1;
 
   display: grid;
   place-items: center;
 
+  width: 100%;
   height: 100%;
 
-  transition:
-    transform 220ms cubic-bezier(0.83, 0, 0.17, 1),
-    background-color 220ms cubic-bezier(0.83, 0, 0.17, 1),
-    box-shadow 220ms cubic-bezier(0.83, 0, 0.17, 1),
-    color 220ms cubic-bezier(0.83, 0, 0.17, 1);
+  color: #41423f;
 }
 
-.switch__half svg {
+.wall-switch__icon svg {
   display: block;
 
   width: 25px;
@@ -282,95 +328,76 @@ a:focus-visible {
   stroke-linejoin: miter;
 }
 
-/*
-  Light mode:
-  the left/sun side is pressed inward;
-  the right/moon side rises outward.
-*/
+/* In light mode, the sun side is visually active */
 
-.switch__half-light {
-  color: #333333;
-  background: #b9b9b5;
-
-  border-radius: 3px 0 0 3px;
-
-  transform:
-    rotateY(16deg)
-    translateZ(-2px);
-
-  transform-origin: right center;
-
-  box-shadow:
-    inset 3px 2px 5px rgba(0, 0, 0, 0.38),
-    inset -1px -1px 0 rgba(255, 255, 255, 0.2);
+.wall-switch__icon--sun {
+  color: #343532;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.45);
 }
 
-.switch__half-dark {
+.wall-switch__icon--moon {
   color: #d8d8d2;
-  background: #50524f;
-
-  border-radius: 0 3px 3px 0;
-
-  transform:
-    rotateY(0deg)
-    translateZ(4px);
-
-  transform-origin: left center;
-
-  box-shadow:
-    inset 2px 2px 0 #777a76,
-    inset -3px -3px 0 #292b29,
-    -3px 0 4px rgba(0, 0, 0, 0.35);
+  opacity: 0.82;
 }
 
-/*
-  Dark mode:
-  the right/moon side is pressed inward;
-  the left/sun side rises outward.
-*/
+/* Dark mode: tilt the complete rocker in the opposite direction */
 
-:root[data-theme="dark"] .switch {
-  background: #4d504c;
+:root[data-theme="dark"] .wall-switch {
+  border-color: #0c0d0c;
+
+  background: #4c4f4b;
 
   box-shadow:
-    inset 0 22px 14px rgba(255, 255, 255, 0.06),
-    inset 0 -18px 14px rgba(0, 0, 0, 0.28),
-    inset 2px 2px 0 #727570,
+    inset 2px 2px 0 #777a75,
     inset -2px -2px 0 #171917,
-    0 0 0 1px #080908,
-    3px 4px 5px rgba(0, 0, 0, 0.45);
+    1px 1px 0 #696c67,
+    4px 5px 6px rgba(0, 0, 0, 0.48);
 }
 
-:root[data-theme="dark"] .switch__lever {
-  background: #272a27;
-}
+:root[data-theme="dark"] .wall-switch__well {
+  border-top-color: #151715;
+  border-left-color: #151715;
+  border-right-color: #6e716d;
+  border-bottom-color: #6e716d;
 
-:root[data-theme="dark"] .switch__half-light {
-  color: #d5d1c7;
-  background: #595c57;
-
-  transform:
-    rotateY(0deg)
-    translateZ(4px);
+  background: #1f221f;
 
   box-shadow:
-    inset 2px 2px 0 #838681,
-    inset -3px -3px 0 #303330,
-    3px 0 4px rgba(0, 0, 0, 0.45);
+    inset 4px 3px 7px rgba(0, 0, 0, 0.8),
+    inset -2px -2px 3px rgba(255, 255, 255, 0.08);
 }
 
-:root[data-theme="dark"] .switch__half-dark {
-  color: #ede8da;
-  background: #343734;
+:root[data-theme="dark"] .wall-switch__rocker {
+  background:
+    linear-gradient(
+      90deg,
+      #4a4d49 0%,
+      #5b5e59 48%,
+      #686b66 52%,
+      #777a75 100%
+    );
 
   transform:
-    rotateY(-16deg)
-    translateZ(-2px);
+    rotateY(13deg)
+    translateX(2px);
 
   box-shadow:
-    inset -3px 2px 5px rgba(0, 0, 0, 0.52),
-    inset 1px -1px 0 rgba(255, 255, 255, 0.12);
+    inset 2px 2px 1px rgba(255, 255, 255, 0.24),
+    inset -3px -3px 2px rgba(0, 0, 0, 0.72),
+    -5px 1px 5px rgba(0, 0, 0, 0.62);
 }
+
+:root[data-theme="dark"] .wall-switch__icon--sun {
+  color: #a5a69f;
+  opacity: 0.72;
+}
+
+:root[data-theme="dark"] .wall-switch__icon--moon {
+  color: #f1ecdf;
+  opacity: 1;
+}
+
+/* Label underneath */
 
 .theme-label {
   display: inline-block;
@@ -389,11 +416,11 @@ a:focus-visible {
   white-space: nowrap;
 }
 
-.theme-toggle:hover .switch {
-  filter: brightness(1.04);
+.theme-toggle:hover .wall-switch {
+  filter: brightness(1.035);
 }
 
-.theme-toggle:active .switch {
+.theme-toggle:active .wall-switch {
   transform: translateY(1px);
 }
 
@@ -409,7 +436,6 @@ a:focus-visible {
 :root[data-theme="dark"] .desktop-icon:hover .desktop-icon-art {
   filter: brightness(0.98) contrast(1.05);
 }
-/* Main window */
 
 .profile-window {
   position: relative;
