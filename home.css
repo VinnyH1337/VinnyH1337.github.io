@@ -50,6 +50,7 @@
 html {
   min-height: 100%;
   background: var(--desktop);
+}
 
   cursor:
     url("assets/cursors/windows-arrow.png") 7 1,
@@ -143,14 +144,12 @@ a:focus-visible {
   object-fit: contain;
   image-rendering: pixelated;
 
-transition:
-    transform 100ms steps(1),
-    filter 100ms steps(1);
+transition: filter 100ms steps(1);
 }
 
 .desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
-  transform: translateY(-2px);
+  transform: none;
   filter: brightness(1.06);
 }
 
@@ -452,38 +451,46 @@ transition:
 
 @media (max-width: 900px) {
   .desktop {
-    padding: 136px 20px 28px;
+    padding: 190px 18px 24px;
   }
 
   .desktop-icons {
     position: absolute;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
 
-    top: 15px;
-    left: 16px;
-
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 72px);
+    gap: 14px 18px;
+    justify-content: center;
 
     width: auto;
   }
 
   .desktop-icon {
-    width: 68px;
+    width: 72px;
   }
 
   .desktop-icon-art {
-    width: auto;
+    width: 65px;
     height: 48px;
-    max-width: 65px;
   }
 
   .desktop-icon-label {
-    max-width: 68px;
-    font-size: 11px;
+    display: block;
+    max-width: 72px;
+    font-size: 10px;
+    line-height: 1.15;
   }
 
   .theme-toggle {
     position: absolute;
+    top: 118px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 90px;
   }
 
   .profile-window {
@@ -499,7 +506,7 @@ textarea,
 
 @media (max-width: 700px) {
   .desktop {
-    padding-top: 104px;
+    padding-top: 200px;
   }
 
   .desktop-icon {
@@ -519,8 +526,8 @@ textarea,
 
   .desktop-icon-label {
     display: block;
-    max-width: 60px;
-    font-size: 10px;
+    max-width: 58px;
+    font-size: 9px;
     line-height: 1.1;
   }
 
@@ -579,14 +586,4 @@ textarea,
   *::after {
     transition: none !important;
   }
-}
-
-
-.window-content,
-.intro-copy p,
-.paper-row p,
-.paper-row h3,
-.ruci-copy p {
-  overflow-wrap: anywhere;
-  word-break: normal;
 }
