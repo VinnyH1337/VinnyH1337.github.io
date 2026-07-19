@@ -23,6 +23,133 @@
   <title>RUCI Europe Index | Vincent Hoffmann</title>
 
 <link rel="stylesheet" href="home.css?v=22">
+  <style>
+  .ruci-page-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 270px;
+    gap: 42px;
+    align-items: start;
+  }
+
+  .ruci-copy h1 {
+    margin: 8px 0;
+    font-size: clamp(30px, 3vw, 40px);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .ruci-copy > p:not(.role) {
+    max-width: 720px;
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .ruci-source-card {
+    padding: 20px;
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+  }
+
+  .ruci-source-card h2 {
+    margin: 0 0 14px;
+    color: var(--teal-bright);
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .source-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 18px;
+  }
+
+  .source-tags span {
+    font-size: 14px;
+  }
+
+  .database-link {
+    display: grid;
+    gap: 3px;
+    margin: 0;
+  }
+
+  .database-link > span {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ruci-chart-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 14px;
+  }
+
+  .ruci-chart-heading h2 {
+    margin-bottom: 2px;
+  }
+
+  .ruci-chart-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .ruci-chart-card {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .ruci-chart-card canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .chart-status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  @media (max-width: 700px) {
+    .ruci-page-intro {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .ruci-chart-heading {
+      display: block;
+    }
+
+    .ruci-chart-heading > a {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    .ruci-chart-card {
+      height: 340px;
+      padding: 10px;
+    }
+  }
+</style>
 
   <script
     src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"
