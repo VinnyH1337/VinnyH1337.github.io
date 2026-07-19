@@ -53,7 +53,7 @@ body {
 a,
 button,
 [role="button"] {
-  cursor: url("assets/cursors/windows-hand.svg") 10 1, pointer;
+  cursor: pointer;
 }
 
 a { color: var(--link); text-underline-offset: 3px; }
@@ -86,8 +86,9 @@ a:hover { color: var(--teal-bright); }
 
 .desktop-icon-art {
   display: block;
-  width: 62px;
-  height: 62px;
+  width: auto;
+  height: 56px;
+  max-width: 76px;
   object-fit: contain;
   image-rendering: pixelated;
   transition: transform 100ms steps(1), filter 100ms steps(1);
@@ -155,7 +156,10 @@ a:hover { color: var(--teal-bright); }
 
 .profile-window {
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: min(1240px, 100%);
+  min-height: calc(100vh - 36px);
   margin: 0 auto;
   border: 3px solid var(--chrome-dark);
   outline: 2px solid var(--chrome-light);
@@ -180,6 +184,7 @@ a:hover { color: var(--teal-bright); }
 }
 
 .window-content {
+  flex: 1;
   padding: clamp(36px, 4.6vw, 62px);
   padding-bottom: 36px;
   background: var(--paper);
@@ -244,9 +249,10 @@ a:hover { color: var(--teal-bright); }
   .desktop { padding: 126px 20px 28px; }
   .desktop-icons { position: absolute; top: 15px; left: 16px; display: flex; gap: 10px; width: auto; }
   .desktop-icon { width: 68px; }
-  .desktop-icon-art { width: 48px; height: 48px; }
+  .desktop-icon-art { width: auto; height: 48px; max-width: 65px; }
   .desktop-icon-label { max-width: 68px; font-size: 11px; }
   .theme-toggle { position: absolute; }
+  .profile-window { min-height: auto; }
 }
 
 input,
@@ -258,7 +264,8 @@ textarea,
 @media (max-width: 700px) {
   .desktop { padding-top: 104px; }
   .desktop-icon { width: 50px; }
-  .desktop-icon-art, .theme-icon { width: 40px; height: 40px; }
+  .desktop-icon-art { width: auto; height: 40px; max-width: 50px; }
+  .theme-icon { width: 40px; height: 40px; }
   .desktop-icon-label { display: none; }
   .theme-toggle { width: 62px; }
   .theme-label { font-size: 11px; }
