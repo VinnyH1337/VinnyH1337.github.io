@@ -18,7 +18,7 @@
 * { box-sizing: border-box; font-family: inherit; }
 html { scroll-behavior: smooth; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
 body { margin: 0; background: #fff; font-size: 17px; line-height: 1.5; cursor: url("assets/cursors/windows-arrow.svg") 0 0, default; }
-a, button, [role="button"] { cursor: url("assets/cursors/windows-hand.svg") 10 1, pointer; }
+a, button, [role="button"] { cursor: pointer; }
 input, textarea, [contenteditable="true"] { cursor: text; }
 a { color: var(--link); text-underline-offset: 2px; }
 a:hover { color: var(--link-hover); }
