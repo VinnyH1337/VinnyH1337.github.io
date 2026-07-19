@@ -136,19 +136,22 @@ a:focus-visible {
 .desktop-icon-art {
   display: block;
 
-  width: 78px;
+  width: auto;
   height: 56px;
+  max-width: 78px;
 
   object-fit: contain;
   image-rendering: pixelated;
 
-transition: filter 100ms steps(1);
+transition:
+    transform 100ms steps(1),
+    filter 100ms steps(1);
 }
 
-.desktop-icon:hover .desktop-icon-art,
+..desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
-  transform: none;
-  filter: none;
+  transform: translateY(-2px);
+  filter: brightness(1.06);
 }
 
 .desktop-icon-label,
@@ -469,10 +472,9 @@ transition: filter 100ms steps(1);
   }
 
   .desktop-icon-art {
-    width: 65px;
+    width: auto;
     height: 48px;
-
-    object-fit: contain;
+    max-width: 65px;
   }
 
   .desktop-icon-label {
@@ -505,10 +507,9 @@ textarea,
   }
 
   .desktop-icon-art {
-    width: 50px;
+    width: auto;
     height: 40px;
-
-    object-fit: contain;
+    max-width: 50px;
   }
 
   .theme-toggle-icon {
