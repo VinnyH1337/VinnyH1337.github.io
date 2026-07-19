@@ -151,8 +151,8 @@ a:focus-visible {
 
 .desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
+  transform: none;
+  filter: none;
 }
 
 .desktop-icon-label,
