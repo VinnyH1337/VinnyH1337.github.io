@@ -49,6 +49,8 @@
 
 html {
   min-height: 100%;
+  background: var(--desktop);
+}
 
   cursor:
     url("assets/cursors/windows-arrow.png") 7 1,
