@@ -168,19 +168,18 @@ a:focus-visible {
   line-height: 1.05;
   text-align: center;
 }
-/* Sideways physical light switch */
-
-/* Retro light/dark mode icon */
+/* Retro light/dark mode desktop icon */
 
 .theme-toggle {
   position: fixed;
   z-index: 8;
+
   top: 24px;
   right: 22px;
 
   display: grid;
   justify-items: center;
-  gap: 5px;
+  gap: 4px;
 
   width: 94px;
   padding: 0;
@@ -191,80 +190,37 @@ a:focus-visible {
   color: #fffaf0;
 }
 
-.theme-icon {
-  display: grid;
-  place-items: center;
-
-  width: 50px;
-  height: 50px;
-
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #555555;
-  border-bottom: 2px solid #555555;
-
-  background: #c0c0c0;
-
-  box-shadow:
-    inset 1px 1px 0 #dfdfdf,
-    inset -1px -1px 0 #808080,
-    2px 3px 0 rgba(0, 0, 0, 0.25);
-
-  color: #222222;
-}
-
-.theme-icon svg {
+.theme-toggle-icon {
   display: block;
 
-  width: 32px;
-  height: 32px;
+  width: auto;
+  height: 56px;
+  max-width: 78px;
 
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: square;
-  stroke-linejoin: miter;
+  object-fit: contain;
+  image-rendering: pixelated;
+
+  transition:
+    transform 100ms steps(1),
+    filter 100ms steps(1);
 }
 
-.sun-icon {
-  display: block;
-}
-
-.moon-icon {
+.theme-toggle-icon-dark {
   display: none;
 }
 
-.theme-label {
-  display: inline-block;
-
-  max-width: 112px;
-  padding: 2px 7px;
-
-  background: var(--teal);
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-
-  color: #fffaf0;
-
-  font-size: 14px;
-  line-height: 1.05;
-  text-align: center;
-  white-space: nowrap;
+:root[data-theme="dark"] .theme-toggle-icon-light {
+  display: none;
 }
 
-.theme-toggle:hover .theme-icon {
-  filter: brightness(1.05);
+:root[data-theme="dark"] .theme-toggle-icon-dark {
+  display: block;
 }
 
-.theme-toggle:active .theme-icon {
-  border-top-color: #555555;
-  border-left-color: #555555;
-  border-right-color: #ffffff;
-  border-bottom-color: #ffffff;
-
-  transform: translate(1px, 1px);
-
-  box-shadow:
-    inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+.theme-toggle:hover .theme-toggle-icon,
+.theme-toggle:focus-visible .theme-toggle-icon {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
 }
 
 .theme-toggle:focus-visible {
@@ -272,66 +228,8 @@ a:focus-visible {
   outline-offset: 4px;
 }
 
-/* Dark mode */
-
-:root[data-theme="dark"] .sun-icon {
-  display: none;
-}
-
-:root[data-theme="dark"] .moon-icon {
-  display: block;
-}
-
-:root[data-theme="dark"] .theme-icon {
-  border-top-color: #7d807c;
-  border-left-color: #7d807c;
-  border-right-color: #171a18;
-  border-bottom-color: #171a18;
-
-  background: #4c504d;
-  color: #efe9d8;
-
-  box-shadow:
-    inset 1px 1px 0 #686b67,
-    inset -1px -1px 0 #242724,
-    2px 3px 0 rgba(0, 0, 0, 0.35);
-}
-
-:root[data-theme="dark"] .desktop-icon-art {
-  filter: brightness(0.87) contrast(1.05);
-}
-
-:root[data-theme="dark"] .desktop-icon:hover .desktop-icon-art {
-  filter: brightness(0.98) contrast(1.05);
-}
-
-/* Mobile sizing */
-
-@media (max-width: 900px) {
-  .theme-toggle {
-    position: absolute;
-  }
-}
-
-@media (max-width: 700px) {
-  .theme-toggle {
-    right: 8px;
-    width: 62px;
-  }
-
-  .theme-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .theme-icon svg {
-    width: 26px;
-    height: 26px;
-  }
-
-  .theme-label {
-    font-size: 11px;
-  }
+.theme-toggle .theme-label {
+  white-space: nowrap;
 }
 
 .profile-window {
@@ -606,9 +504,9 @@ textarea,
     max-width: 50px;
   }
 
-  .theme-icon {
-    width: 40px;
+  .theme-toggle-icon {
     height: 40px;
+    max-width: 50px;
   }
 
   .desktop-icon-label {
