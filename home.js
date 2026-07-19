@@ -1,6 +1,6 @@
 const root = document.documentElement;
 const themeToggle = document.getElementById("theme-toggle");
-const themeLabel = document.querySelector(".theme-label");
+const themeLabel = themeToggle?.querySelector(".theme-label");
 
 function applyTheme(theme) {
   const isDark = theme === "dark";
@@ -8,8 +8,7 @@ function applyTheme(theme) {
   root.dataset.theme = theme;
 
   if (themeToggle) {
-    themeToggle.checked = isDark;
-    themeToggle.setAttribute("aria-checked", String(isDark));
+    themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute(
       "aria-label",
       isDark ? "Switch to light mode" : "Switch to dark mode"
@@ -33,6 +32,11 @@ const initialTheme =
 
 applyTheme(initialTheme);
 
-themeToggle?.addEventListener("change", () => {
-  applyTheme(themeToggle.checked ? "dark" : "light");
+themeToggle?.addEventListener("click", () => {
+  const nextTheme =
+    root.dataset.theme === "dark"
+      ? "light"
+      : "dark";
+
+  applyTheme(nextTheme);
 });
