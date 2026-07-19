@@ -374,6 +374,13 @@ a:focus-visible {
   line-height: 1.65;
 }
 
+/* Slightly stronger links in page content */
+
+.intro-copy a,
+.paper-row a {
+  font-weight: 600;
+}
+
 /* Research sections */
 
 .research-section {
