@@ -645,12 +645,12 @@ textarea,
   word-break: normal;
 }
 
-.replication-link {
-  color: #d97706;
-  font-weight: 600;
+a.replication-link {
+    color: #e68a2e;
+    font-weight: 600;
 }
 
-.replication-link:hover,
-.replication-link:focus-visible {
-  color: #b45309;
+a.replication-link:hover,
+a.replication-link:focus-visible {
+    color: #f09b3d;
 }
