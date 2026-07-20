@@ -50,7 +50,6 @@
 html {
   min-height: 100%;
   background: var(--desktop);
-}
 
   cursor:
     url("assets/cursors/windows-arrow.png") 7 1,
@@ -144,12 +143,14 @@ a:focus-visible {
   object-fit: contain;
   image-rendering: pixelated;
 
-transition: filter 100ms steps(1);
+transition:
+    transform 100ms steps(1),
+    filter 100ms steps(1);
 }
 
 .desktop-icon:hover .desktop-icon-art,
 .desktop-icon:focus-visible .desktop-icon-art {
-  transform: none;
+  transform: translateY(-2px);
   filter: brightness(1.06);
 }
 
@@ -451,46 +452,57 @@ transition: filter 100ms steps(1);
 
 @media (max-width: 900px) {
   .desktop {
-    padding: 190px 18px 24px;
+    padding: 16px 14px 24px;
   }
 
   .desktop-icons {
-    position: absolute;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
 
     display: grid;
-    grid-template-columns: repeat(3, 72px);
-    gap: 14px 18px;
-    justify-content: center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px 12px;
 
-    width: auto;
+    width: min(100%, 360px);
+    margin: 0 auto 18px;
   }
 
   .desktop-icon {
-    width: 72px;
+    width: 100%;
+    min-width: 0;
   }
 
   .desktop-icon-art {
     width: 65px;
     height: 48px;
+    max-width: 100%;
+    margin: 0 auto;
   }
 
   .desktop-icon-label {
     display: block;
-    max-width: 72px;
-    font-size: 10px;
-    line-height: 1.15;
+    width: 100%;
+    max-width: 86px;
+    margin: 0 auto;
+    padding: 3px 5px;
+
+    font-size: 11px;
+    line-height: 1.12;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .theme-toggle {
-    position: absolute;
-    top: 118px;
-    left: 50%;
+    position: relative;
+    top: auto;
     right: auto;
-    transform: translateX(-50%);
-    width: 90px;
+    left: auto;
+    transform: none;
+
+    width: 94px;
+    margin: 0 auto 22px;
   }
 
   .profile-window {
@@ -506,33 +518,46 @@ textarea,
 
 @media (max-width: 700px) {
   .desktop {
-    padding-top: 200px;
+    padding: 14px 10px 20px;
+  }
+
+  .desktop-icons {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px 12px;
+
+    width: min(100%, 270px);
+    margin-bottom: 18px;
   }
 
   .desktop-icon {
-    width: 50px;
+    width: 100%;
   }
 
   .desktop-icon-art {
-    width: auto;
-    height: 40px;
-    max-width: 50px;
-  }
-
-  .theme-toggle-icon {
-    height: 40px;
-    max-width: 50px;
+    width: 58px;
+    height: 44px;
+    max-width: 100%;
   }
 
   .desktop-icon-label {
     display: block;
-    max-width: 58px;
-    font-size: 9px;
-    line-height: 1.1;
+    width: 100%;
+    max-width: 105px;
+
+    font-size: 10px;
+    line-height: 1.12;
+    white-space: normal;
+    overflow-wrap: anywhere;
   }
 
   .theme-toggle {
-    width: 62px;
+    width: 94px;
+    margin-bottom: 20px;
+  }
+
+  .theme-toggle-icon {
+    height: 44px;
+    max-width: 58px;
   }
 
   .theme-label {
@@ -540,43 +565,75 @@ textarea,
   }
 
   .profile-intro {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 26px;
   }
 
   .portrait-frame {
-    width: min(225px, 65vw);
+    width: min(225px, 72vw);
   }
 
   .window-content {
-    padding: 28px 22px 34px;
+    min-width: 0;
+    padding: 28px 18px 34px;
+    overflow-wrap: anywhere;
+  }
+
+  .intro-copy,
+  .ruci-copy,
+  .paper-row > div {
+    min-width: 0;
   }
 
   .intro-copy h1 {
     font-size: 29px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
+    overflow-wrap: anywhere;
+  }
+
+  .intro-copy p,
+  .ruci-copy p,
+  .paper-row p,
+  .paper-row h3,
+  .database-link,
+  .database-link a {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .paper-row {
+    grid-template-columns: 22px minmax(0, 1fr);
   }
 }
 
 @media (max-width: 430px) {
-  .desktop-icons {
-    gap: 2px;
+  .desktop {
+    padding-right: 8px;
+    padding-left: 8px;
   }
 
-  .desktop-icon {
-    width: 43px;
+  .desktop-icons {
+    width: min(100%, 250px);
+    gap: 14px 8px;
+  }
+
+  .desktop-icon-label {
+    max-width: 98px;
+    font-size: 9px;
   }
 
   .theme-toggle {
-    right: 8px;
+    right: auto;
   }
 
   .paper-row {
-    grid-template-columns:
-      22px
-      1fr;
-
+    grid-template-columns: 20px minmax(0, 1fr);
     gap: 5px;
+  }
+
+  .window-content {
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }
 
@@ -586,4 +643,23 @@ textarea,
   *::after {
     transition: none !important;
   }
+}
+
+
+.window-content,
+.intro-copy,
+.ruci-copy,
+.paper-row > div {
+  min-width: 0;
+}
+
+.window-content,
+.intro-copy p,
+.ruci-copy p,
+.paper-row p,
+.paper-row h3,
+.database-link,
+.database-link a {
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
