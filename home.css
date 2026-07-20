@@ -229,6 +229,10 @@ transition:
   white-space: normal;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 .profile-window {
   position: relative;
   display: flex;
@@ -624,16 +628,6 @@ textarea,
   }
 }
 
-@media (max-height: 760px) and (min-width: 901px) {
-  .profile-window {
-    height: calc(100vh - 36px);
-    min-height: 0;
-  }
-
-  .window-content {
-    overflow-y: auto;
-  }
-}
 
 .window-content,
 .intro-copy,
