@@ -236,7 +236,7 @@ transition:
   flex-direction: column;
 
   width: min(1360px, 100%);
-  min-height: calc(100vh - 36px);
+  height: calc(100vh - 36px);
 
   margin: 0 auto;
 
@@ -278,7 +278,7 @@ transition:
 
 .window-content {
   flex: 1;
-
+  overflow-y: auto;
   padding: clamp(36px, 4.5vw, 62px);
   padding-bottom: 36px;
 
