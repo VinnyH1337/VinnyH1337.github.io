@@ -174,26 +174,19 @@ transition:
 :root[data-theme="dark"] .theme-label {
   color: #e8e6df;
 }
-/* Retro light/dark mode desktop icon */
+/* Theme desktop icon */
 
 .theme-toggle {
-  position: fixed;
-  z-index: 8;
-
-  top: 24px;
-  right: 22px;
-
-  display: grid;
-  justify-items: center;
-  gap: 7px;
-
-  width: 94px;
+  appearance: none;
+  width: 100%;
+  min-width: 0;
   padding: 0;
 
   border: 0;
   background: transparent;
 
-  color: #fffaf0;
+  color: inherit;
+  font: inherit;
 }
 
 .theme-toggle-icon {
@@ -223,19 +216,13 @@ transition:
   display: block;
 }
 
-.theme-toggle:hover .theme-toggle-icon,
-.theme-toggle:focus-visible .theme-toggle-icon {
-  transform: translateY(-2px);
-  filter: brightness(1.06);
-}
-
 .theme-toggle:focus-visible {
   outline: 1px dotted var(--ink);
   outline-offset: 4px;
 }
 
 .theme-toggle .theme-label {
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .profile-window {
@@ -486,6 +473,13 @@ transition:
     margin: 0 auto;
   }
 
+  .theme-toggle-icon {
+    width: 65px;
+    height: 48px;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
   .desktop-icon-label {
     display: block;
     width: 100%;
@@ -498,17 +492,6 @@ transition:
     line-height: 1.12;
     white-space: normal;
     overflow-wrap: anywhere;
-  }
-
-  .theme-toggle {
-    position: relative;
-    top: auto;
-    right: auto;
-    left: auto;
-    transform: none;
-
-    width: 94px;
-    margin: 0 auto 22px;
   }
 
   .profile-window {
@@ -545,6 +528,12 @@ textarea,
     max-width: 100%;
   }
 
+  .theme-toggle-icon {
+    width: 58px;
+    height: 44px;
+    max-width: 100%;
+  }
+
   .desktop-icon-label {
     display: block;
     width: 100%;
@@ -554,21 +543,6 @@ textarea,
     line-height: 1.12;
     white-space: normal;
     overflow-wrap: anywhere;
-  }
-
-  .theme-toggle {
-    width: 94px;
-    margin-bottom: 20px;
-  }
-
-  .theme-toggle-icon {
-    height: 44px;
-    max-width: 58px;
-  }
-
-  .theme-label {
-    padding: 0;
-    font-size: 11px;
   }
 
   .profile-intro {
@@ -627,10 +601,6 @@ textarea,
   .desktop-icon-label {
     max-width: 98px;
     font-size: 9px;
-  }
-
-  .theme-toggle {
-    right: auto;
   }
 
   .paper-row {
