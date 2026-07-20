@@ -122,7 +122,7 @@ a:focus-visible {
 .desktop-icon {
   display: grid;
   justify-items: center;
-  gap: 4px;
+  gap: 7px;
 
   color: #fffaf0;
   text-decoration: none;
@@ -157,17 +157,22 @@ transition:
 .desktop-icon-label,
 .theme-label {
   max-width: 112px;
+  padding: 0;
 
-  padding: 2px 7px;
+  background: transparent;
+  box-shadow: none;
 
-  background: var(--teal);
-  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.3);
-
-  color: #fffaf0;
+  color: #2f2f2f;
 
   font-size: 14px;
-  line-height: 1.05;
+  line-height: 1.1;
   text-align: center;
+  text-shadow: none;
+}
+
+:root[data-theme="dark"] .desktop-icon-label,
+:root[data-theme="dark"] .theme-label {
+  color: #e8e6df;
 }
 /* Retro light/dark mode desktop icon */
 
@@ -180,7 +185,7 @@ transition:
 
   display: grid;
   justify-items: center;
-  gap: 4px;
+  gap: 7px;
 
   width: 94px;
   padding: 0;
@@ -486,7 +491,8 @@ transition:
     width: 100%;
     max-width: 86px;
     margin: 0 auto;
-    padding: 3px 5px;
+
+    padding: 0;
 
     font-size: 11px;
     line-height: 1.12;
@@ -561,6 +567,7 @@ textarea,
   }
 
   .theme-label {
+    padding: 0;
     font-size: 11px;
   }
 
