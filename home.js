@@ -5,6 +5,7 @@ const themeLabel = themeToggle?.querySelector(".theme-label");
 function readSavedTheme() {
   try {
     const savedTheme = localStorage.getItem("theme");
+
     return savedTheme === "light" || savedTheme === "dark"
       ? savedTheme
       : null;
@@ -30,12 +31,12 @@ function applyTheme(theme, persist = false) {
     themeToggle.setAttribute("aria-pressed", String(isDark));
     themeToggle.setAttribute(
       "aria-label",
-      isDark ? "Switch to light mode" : "Switch to dark mode"
+      isDark ? "Switch to light theme" : "Switch to dark theme"
     );
   }
 
   if (themeLabel) {
-    themeLabel.textContent = isDark ? "Dark Mode" : "Light Mode";
+    themeLabel.textContent = "Theme";
   }
 
   if (persist) {
@@ -44,6 +45,7 @@ function applyTheme(theme, persist = false) {
 }
 
 const savedTheme = readSavedTheme();
+
 const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
   ? "dark"
   : "light";
@@ -51,6 +53,8 @@ const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
 applyTheme(savedTheme || preferredTheme);
 
 themeToggle?.addEventListener("click", () => {
-  const nextTheme = root.dataset.theme === "dark" ? "light" : "dark";
+  const nextTheme =
+    root.dataset.theme === "dark" ? "light" : "dark";
+
   applyTheme(nextTheme, true);
 });
