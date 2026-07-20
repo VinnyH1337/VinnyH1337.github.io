@@ -231,12 +231,11 @@ transition:
 
 .profile-window {
   position: relative;
-
   display: flex;
   flex-direction: column;
 
   width: min(1360px, 100%);
-  height: calc(100vh - 36px);
+  min-height: calc(100vh - 36px);
 
   margin: 0 auto;
 
@@ -278,7 +277,6 @@ transition:
 
 .window-content {
   flex: 1;
-  overflow-y: auto;
   padding: clamp(36px, 4.5vw, 62px);
   padding-bottom: 36px;
 
@@ -626,6 +624,16 @@ textarea,
   }
 }
 
+@media (max-height: 760px) and (min-width: 901px) {
+  .profile-window {
+    height: calc(100vh - 36px);
+    min-height: 0;
+  }
+
+  .window-content {
+    overflow-y: auto;
+  }
+}
 
 .window-content,
 .intro-copy,
