@@ -644,3 +644,13 @@ textarea,
   overflow-wrap: anywhere;
   word-break: normal;
 }
+
+.replication-link {
+  color: #d97706;
+  font-weight: 600;
+}
+
+.replication-link:hover,
+.replication-link:focus-visible {
+  color: #b45309;
+}
