@@ -239,8 +239,8 @@ html {
   flex-direction: column;
 
   width: min(1360px, 100%);
-  min-height: calc(100vh - 36px);
-  height: auto;
+  height: calc(100vh - 36px);
+  min-height: 0;
 
   margin: 0 auto;
 }
@@ -503,9 +503,10 @@ html {
   }
 
 .profile-window {
+  width: 100%;
   height: auto;
-  min-height: auto;
-  overflow: visible;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .window-content {
