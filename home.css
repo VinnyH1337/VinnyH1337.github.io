@@ -239,7 +239,8 @@ html {
   flex-direction: column;
 
   width: min(1360px, 100%);
-  min-height: calc(100vh - 36px);
+   height: calc(100vh - 36px);
+  min-height: 0;
 
   margin: 0 auto;
 
