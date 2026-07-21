@@ -103,14 +103,28 @@
     font-size: 14px;
   }
 
-  .ruci-chart-card {
-    position: relative;
-    width: 100%;
-    height: clamp(440px, 52vh, 560px);
-    padding: 18px;
-    border: 1px solid var(--line);
-    background: var(--paper);
-  }
+.window-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.ruci-chart-section {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+}
+
+.ruci-chart-card {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  width: 100%;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+}
 
   .ruci-chart-card canvas {
     display: block;
