@@ -239,10 +239,11 @@ html {
   flex-direction: column;
 
   width: min(1360px, 100%);
-   height: calc(100vh - 36px);
-  min-height: 0;
+  min-height: calc(100vh - 36px);
+  height: auto;
 
   margin: 0 auto;
+}
 
   border: 3px solid var(--chrome-dark);
   outline: 2px solid var(--chrome-light);
