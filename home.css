@@ -501,9 +501,17 @@ html {
     overflow-wrap: anywhere;
   }
 
-  .profile-window {
-    min-height: auto;
-  }
+.profile-window {
+  height: auto;
+  min-height: auto;
+  overflow: visible;
+}
+
+.window-content {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
 }
 
 input,
