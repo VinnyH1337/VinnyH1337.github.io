@@ -126,11 +126,18 @@
     background: var(--paper);
   }
 
-  .ruci-chart-card canvas {
+.ruci-chart-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.ruci-chart-card canvas {
     display: block;
     width: 100% !important;
+    max-width: 100%;
     height: 100% !important;
-  }
+    max-height: 100%;
+}
 
   .chart-status {
     position: absolute;
