@@ -22,7 +22,7 @@
 
   <title>Russia-Ukraine Conflict Index | Vincent Hoffmann</title>
 
-<link rel="stylesheet" href="home.css?v=29">
+<link rel="stylesheet" href="home.css?v=30">
   <style>
   .ruci-page-intro {
     display: grid;
@@ -103,25 +103,28 @@
     font-size: 14px;
   }
 
-.window-content {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
+  .window-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
 
-.ruci-chart-section {
-  display: block;
-  flex: none;
-  min-height: 0;
-}
+  .ruci-chart-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+  }
 
-.ruci-chart-card {
-  flex: none;
-  width: 100%;
-  height: 340px;
-  min-height: 0;
-  padding: 10px;
-}
+  .ruci-chart-card {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    min-height: 420px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
 
   .ruci-chart-card canvas {
     display: block;
@@ -140,6 +143,22 @@
     pointer-events: none;
   }
 
+  @media (max-width: 900px) {
+    .ruci-chart-section {
+      display: block;
+      flex: none;
+      min-height: 0;
+    }
+
+    .ruci-chart-card {
+      flex: none;
+      width: 100%;
+      height: 340px;
+      min-height: 0;
+      padding: 10px;
+    }
+  }
+
   @media (max-width: 700px) {
     .ruci-page-intro {
       grid-template-columns: 1fr;
@@ -154,11 +173,6 @@
       display: inline-block;
       margin-top: 8px;
     }
-
-    .ruci-chart-card {
-      height: 340px;
-      padding: 10px;
-    }
   }
 </style>
 
@@ -172,8 +186,8 @@
     defer
   ></script>
 
-  <script src="home.js?v=14" defer></script>
-  <script src="script.js?v=10" defer></script>
+  <script src="home.js?v=15" defer></script>
+  <script src="script.js?v=11" defer></script>
 </head>
 
 <body>
