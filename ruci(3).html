@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="The RUCI Europe Index tracks Russia-Ukraine conflict uncertainty in Europe."
+  >
+
+  <script>
+  (() => {
+    const savedTheme = localStorage.getItem("theme");
+    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+
+    document.documentElement.dataset.theme = savedTheme || preferredTheme;
+  })();
+</script>
+
+  <title>Russia-Ukraine Conflict Index | Vincent Hoffmann</title>
+
+<link rel="stylesheet" href="home.css?v=30">
+  <style>
+  .ruci-page-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 270px);
+    gap: 42px;
+    align-items: start;
+  }
+
+  .ruci-copy h1 {
+    margin: 8px 0;
+    font-size: clamp(30px, 3vw, 40px);
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    text-transform: uppercase;
+  }
+
+  .ruci-copy > p:not(.role) {
+    max-width: 720px;
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .ruci-source-card {
+    padding: 20px;
+    border: 1px solid var(--line);
+    background: var(--paper-deep);
+  }
+
+  .ruci-source-card h2 {
+    margin: 0 0 14px;
+    color: var(--teal-bright);
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .source-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 18px;
+  }
+
+  .source-tags span {
+    font-size: 14px;
+  }
+
+  .database-link {
+    display: grid;
+    gap: 3px;
+    margin: 0;
+  }
+
+  .database-link > span {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ruci-chart-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 14px;
+  }
+
+  .ruci-chart-heading h2 {
+    margin-bottom: 2px;
+  }
+
+  .ruci-chart-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .window-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .ruci-chart-section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .ruci-chart-card {
+    position: relative;
+    flex: 1;
+    width: 100%;
+    min-height: 420px;
+    padding: 16px;
+    border: 1px solid var(--line);
+    background: var(--paper);
+  }
+
+  .ruci-chart-card canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .chart-status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .ruci-chart-section {
+      display: block;
+      flex: none;
+      min-height: 0;
+    }
+
+    .ruci-chart-card {
+      flex: none;
+      width: 100%;
+      height: 340px;
+      min-height: 0;
+      padding: 10px;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .ruci-page-intro {
+      grid-template-columns: 1fr;
+      gap: 26px;
+    }
+
+    .ruci-chart-heading {
+      display: block;
+    }
+
+    .ruci-chart-heading > a {
+      display: inline-block;
+      margin-top: 8px;
+    }
+  }
+</style>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/chart.js@4.4.9/dist/chart.umd.min.js"
+    defer
+  ></script>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+    defer
+  ></script>
+
+  <script src="home.js?v=15" defer></script>
+  <script src="script.js?v=11" defer></script>
+</head>
+
+<body>
+  <main class="desktop">
+
+    <nav class="desktop-icons" aria-label="Quick links">
+
+      <a class="desktop-icon" href="index.html">
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/home.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">Home</span>
+      </a>
+
+      <a class="desktop-icon" href="ruci.html">
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/ruciindex.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">RU Conflict Index</span>
+      </a>
+
+<a
+  class="desktop-icon"
+  href="https://vinnyh1337.github.io/gpr-dashboard/"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    class="desktop-icon-art"
+    src="assets/icons/aigpr.png?v=15"
+    alt=""
+  >
+  <span class="desktop-icon-label">AI-GPR Dashboard</span>
+</a>
+
+      <a
+        class="desktop-icon"
+        href="https://www.linkedin.com/in/vincent-hoffmann-17097a123/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/linkedin.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">LinkedIn</span>
+      </a>
+
+      <a
+        class="desktop-icon"
+        href="https://scholar.google.com/citations?user=iz4PqZQAAAAJ&hl=de&oi=ao"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/scholar.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">Google Scholar</span>
+      </a>
+
+      <a
+        class="desktop-icon"
+        href="https://github.com/VinnyH1337"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          class="desktop-icon-art"
+          src="assets/icons/github.png?v=15"
+          alt=""
+        >
+        <span class="desktop-icon-label">GitHub</span>
+      </a>
+
+      <a
+  class="desktop-icon theme-toggle"
+  id="theme-toggle"
+  href="#"
+  aria-pressed="false"
+  aria-label="Toggle theme"
+>
+  <img
+    class="desktop-icon-art theme-toggle-icon theme-toggle-icon-light"
+    src="assets/icons/sun.png"
+    alt=""
+    aria-hidden="true"
+  >
+
+  <img
+    class="desktop-icon-art theme-toggle-icon theme-toggle-icon-dark"
+    src="assets/icons/moon.png"
+    alt=""
+    aria-hidden="true"
+  >
+
+  <span class="desktop-icon-label theme-label">Theme</span>
+</a>
+
+    </nav>
+
+
+    <section class="profile-window" aria-labelledby="ruci-title">
+
+      <div class="window-bar" aria-hidden="true">
+        <span></span>
+      </div>
+
+      <div class="window-content">
+
+        <header class="ruci-page-intro">
+
+          <div class="ruci-copy">
+
+            
+            <h1 id="ruci-title">RUCI Europe Index</h1>
+            
+            
+            <p class="role">Research Data</p>
+
+            
+
+            <span class="short-rule" aria-hidden="true"></span>
+
+            <p>
+              The Russia-Ukraine Conflict Index (RUCI) provides a monthly measure of uncertainty and is designed to support research on the economic and financial consequences of the Russia-Ukraine conflict, based on leading European newspapers.
+            </p>
+
+            <p>
+              Higher values indicate periods in which conflict-related
+              uncertainty is more prominent.
+            </p>
+
+          </div>
+
+          <aside
+            class="ruci-source-card"
+            aria-label="RUCI data sources"
+          >
+
+            <h2>European News Sources</h2>
+
+            <div class="source-tags">
+              <span>Die Welt,</span>
+              <span>The Guardian</span>
+              <span>& Le Monde</span>
+            </div>
+
+            <p class="database-link">
+              <span>Database</span>
+
+              <a
+                href="https://tdmstudio.proquest.com/home"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ProQuest TDM Studio
+              </a>
+            </p>
+
+          </aside>
+
+        </header>
+
+        <section
+          class="research-section ruci-chart-section"
+          aria-labelledby="chart-title"
+        >
+
+          <div class="ruci-chart-heading">
+
+            <div>
+              <h2 id="chart-title">Monthly RUCI Europe</h2>
+              <p>January 2014 onward</p>
+            </div>
+
+            <a href="ruci_europe.xlsx" download>
+              Download Data
+            </a>
+
+          </div>
+
+          <div class="ruci-chart-card">
+
+            <canvas
+              id="ruci-chart"
+              aria-label="RUCI Europe Index line chart"
+              role="img"
+            ></canvas>
+
+            <p
+              id="chart-status"
+              class="chart-status"
+              aria-live="polite"
+            ></p>
+
+          </div>
+
+        </section>
+
+      </div>
+
+    </section>
+
+  </main>
+</body>
+</html>
