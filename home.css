@@ -667,3 +667,11 @@ a.replication-link:hover,
 a.replication-link:focus-visible {
     color: #f09b3d;
 }
+
+/* Wide but vertically short screens */
+@media (min-width: 901px) and (max-height: 900px) {
+  .profile-window {
+    height: auto;
+    min-height: calc(100vh - 36px);
+  }
+}
