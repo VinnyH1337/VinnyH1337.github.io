@@ -11,12 +11,9 @@
 
   <script>
   (() => {
-    const savedTheme = localStorage.getItem("theme");
-    const preferredTheme = window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
+const savedTheme = localStorage.getItem("theme");
 
-    document.documentElement.dataset.theme = savedTheme || preferredTheme;
+document.documentElement.dataset.theme = savedTheme || "light";
   })();
 </script>
 
